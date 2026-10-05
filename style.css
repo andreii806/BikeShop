@@ -1,0 +1,351 @@
+/* ==========================================================
+   BikeShop - style.css
+   Direcție: atelier de biciclete. Aluminiu periat, albastru-negru
+   de cadru, galben reflectorizant și un lanț desenat sub antet.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
+
+/* ---------- Variabile ---------- */
+:root {
+    --ink: #101b26;          /* albastru-negru, ca vopseaua de cadru */
+    --steel: #566676;        /* text secundar */
+    --aluminium: #e6eaee;    /* fundal pagină */
+    --aluminium-dark: #c3cbd3;
+    --paper: #f8fafb;        /* suprafețe */
+    --hivis: #ffc21a;        /* galben reflectorizant */
+
+    --transmisie: #0e7c7b;
+    --franare: #d6343a;
+    --suspensie: #2f5bea;
+
+    --radius-panel: 10px;
+    --radius-card: 8px;
+    --radius-tag: 4px;
+
+    --font: "Archivo", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    --page-width: 1040px;
+}
+
+/* ---------- Reset minim ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--aluminium);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Antet ---------- */
+.app-header {
+    position: relative;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem max(1.25rem, calc((100% - var(--page-width)) / 2)) 3.25rem;
+}
+
+.app-header h1 {
+    font-size: clamp(2.6rem, 8vw, 4.5rem);
+    font-weight: 850;
+    font-stretch: 125%;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.app-header p {
+    color: #aab6c2;
+    max-width: 46ch;
+    margin-top: 0.75rem;
+}
+
+.app-header .app-count {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--hivis);
+    color: var(--ink);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--radius-tag);
+}
+
+/* Lanțul: inele alăturate pe marginea de jos a antetului */
+.app-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    background-image: radial-gradient(
+        ellipse 8px 4.5px at 50% 50%,
+        transparent 62%,
+        var(--hivis) 68%,
+        var(--hivis) 96%,
+        transparent 100%
+    );
+    background-size: 14px 14px;
+    background-repeat: repeat-x;
+    opacity: 0.9;
+}
+
+/* ---------- Layout principal ---------- */
+.container {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    flex: 1;
+}
+
+@media (min-width: 820px) {
+    .container {
+        grid-template-columns: 320px 1fr;
+        align-items: start;
+        gap: 2rem;
+    }
+
+    .container > .panel:first-child {
+        position: sticky;
+        top: 1.5rem;
+    }
+}
+
+/* ---------- Panouri ---------- */
+.panel {
+    background: var(--paper);
+    border: 1px solid var(--aluminium-dark);
+    border-radius: var(--radius-panel);
+    padding: 1.5rem;
+}
+
+.panel h2 {
+    font-size: 1.35rem;
+    font-weight: 750;
+    font-stretch: 110%;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+}
+
+/* ---------- Formular ---------- */
+.item-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.item-form label {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.item-form input,
+.item-form select {
+    width: 100%;
+    font: inherit;
+    font-weight: 400;
+    color: var(--ink);
+    background: #fff;
+    border: 2px solid var(--aluminium-dark);
+    border-radius: 6px;
+    padding: 0.65rem 0.8rem;
+    transition: border-color 0.15s ease;
+}
+
+.item-form input::placeholder {
+    color: #8a97a4;
+}
+
+.item-form input:hover,
+.item-form select:hover {
+    border-color: var(--steel);
+}
+
+.item-form input:focus-visible,
+.item-form select:focus-visible {
+    outline: 3px solid var(--suspensie);
+    outline-offset: 2px;
+    border-color: var(--ink);
+}
+
+.item-form button {
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    color: var(--ink);
+    background: var(--hivis);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 3px 0 var(--ink);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.item-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--ink);
+}
+
+.item-form button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+.item-form button:focus-visible {
+    outline: 3px solid var(--suspensie);
+    outline-offset: 3px;
+}
+
+/* ---------- Lista de piese ---------- */
+.item-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.15rem;
+    background: #fff;
+    border: 1px solid var(--aluminium-dark);
+    border-left: 6px solid var(--steel);
+    border-radius: var(--radius-card);
+}
+
+.item-card h3 {
+    font-size: 1.05rem;
+    font-weight: 650;
+    line-height: 1.3;
+    margin-bottom: 0.45rem;
+}
+
+/* Marginea din stânga ia culoarea categoriei */
+.item-card:has(.badge-transmisie) { border-left-color: var(--transmisie); }
+.item-card:has(.badge-franare)    { border-left-color: var(--franare); }
+.item-card:has(.badge-suspensie)  { border-left-color: var(--suspensie); }
+
+/* ---------- Etichete de categorie ---------- */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: #fff;
+    background: var(--steel);
+    border-radius: var(--radius-tag);
+}
+
+.badge-transmisie { background: var(--transmisie); }
+.badge-franare    { background: var(--franare); }
+.badge-suspensie  { background: var(--suspensie); }
+
+/* ---------- Stoc ---------- */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 650;
+    color: #1f6b3a;
+}
+
+.status::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: #2ea15a;
+    box-shadow: 0 0 0 3px rgba(46, 161, 90, 0.2);
+}
+
+/* Piesă indisponibilă */
+.item-card.done {
+    background: repeating-linear-gradient(
+        135deg,
+        #f1f3f5,
+        #f1f3f5 8px,
+        #e9edf0 8px,
+        #e9edf0 16px
+    );
+    border-left-color: var(--aluminium-dark);
+}
+
+.item-card.done h3 {
+    color: var(--steel);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
+.item-card.done .badge {
+    opacity: 0.6;
+}
+
+.item-card.done .status {
+    color: var(--franare);
+}
+
+.item-card.done .status::before {
+    background: var(--franare);
+    box-shadow: 0 0 0 3px rgba(214, 52, 58, 0.18);
+}
+
+/* ---------- Subsol ---------- */
+.app-footer {
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--steel);
+    border-top: 1px solid var(--aluminium-dark);
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 520px) {
+    .app-header {
+        padding-top: 2.25rem;
+        padding-bottom: 2.75rem;
+    }
+
+    .panel {
+        padding: 1.15rem;
+    }
+
+    .item-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
+
+/* ---------- Accesibilitate ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

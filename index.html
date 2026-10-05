@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BikeShop - Mockup</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="app-header">
+        <h1>BikeShop</h1>
+        <p>Magazin online pentru piese de bicicletă.</p>
+        <p class="app-count">3 piese, dintre care 2 în stoc</p>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>Adaugă piesă</h2>
+            <form class="item-form">
+                <label>Denumire piesă 
+                    <input type="text" name="titlu" placeholder="Ex: Lanț 11 viteze" />
+                </label>
+                <label>Categorie
+                    <select name="eticheta">
+                        <option value="transmisie">Transmisie</option>
+                        <option value="franare">Franare</option>
+                        <option value="suspensie">Suspensie</option>
+                    </select>
+                </label>
+                <button type="submit">Adaugă</button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Piesele mele</h2>
+            <ul class="item-list">
+                <li class="item-card">
+                    <div>
+                        <h3>Pinioane Shimano 11-42t</h3>
+                        <span class="badge badge-transmisie">Transmisie</span>
+                    </div>
+                    <span class="status">Stoc disponibil</span>
+                </li>
+                <li class="item-card done">
+                    <div>
+                        <h3>Set plăcuțe frână hidraulică</h3>
+                        <span class="badge badge-franare">Franare</span>
+                    </div>
+                    <span class="status">Indisponibil</span>
+                </li>
+                <li class="item-card">
+                    <div>
+                        <h3>Furcă aer 100mm</h3>
+                        <span class="badge badge-suspensie">Suspensie</span>
+                    </div>
+                    <span class="status">Stoc disponibil</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="app-footer">Proiect Tehnologii Web</footer>
+</body>
+</html>
