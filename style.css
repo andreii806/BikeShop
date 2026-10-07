@@ -349,3 +349,13 @@ ul {
         transition: none !important;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --aluminium: #14121d;
+        --paper: #1e1b2e;
+        --ink: #e5e7eb;
+        --steel: #9ca3af;
+        --aluminium-dark: #352f4d;
+    }
+}
