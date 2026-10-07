@@ -45,10 +45,10 @@ Plain JavaScript, no DOM. piese.js holds the array and functions that read and c
 ## Verification Table - Stage 2
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S2-R1 | JS file linked, logs on page load | [index.html]() | open page, F12 |
-| S2-R2 | 3+ items with id, name, state, tag | [piese.js]() | read |
-| S2-R3 | list, count, search, add, toggle, delete | [piese.js]() | console output |
-| S2-R4 | add rejects empty name and invalid tag | [piese.js]() | last 2 console lines |
-| S2-R5 | original array unchanged after add | [piese.js]() | console line |
-| S2-R6 | README Stage 2 section + AI log | [README.md]() | read |
-| S2-R7 | commit "Stage 2" pushed | [Commit history]() | commit history |
+| S2-R1 | JS file linked, logs on page load | [index.html](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/index.html#L64) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | [piese.js](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/piese.js#L6-L10) | read |
+| S2-R3 | list, count, search, add, toggle, delete | [piese.js](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/piese.js#L12-L67) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [piese.js](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/piese.js#L34-L45) | last 2 console lines |
+| S2-R5 | original array unchanged after add | [piese.js](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/piese.js#L54) | console line |
+| S2-R6 | README Stage 2 section + AI log | [README.md](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/README.md?plain=1#L42-L54  https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/AI-log/etapa-02.md?plain=1#L1-L11) | read |
+| S2-R7 | commit "Stage 2" pushed | [Commit history](https://github.com/andreii806/BikeShop/commit/9fc7dca032b7d37d20c5fde4a59349aec27679e2) | commit history |
