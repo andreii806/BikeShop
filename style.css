@@ -73,7 +73,7 @@ ul {
 }
 
 .app-header p {
-    color: #aab6c2;
+    color: #333333;
     max-width: 46ch;
     margin-top: 0.75rem;
 }
@@ -168,7 +168,7 @@ ul {
     width: 100%;
     font: inherit;
     font-weight: 400;
-    color: var(--ink);
+    color: #333333;
     background: #fff;
     border: 2px solid var(--aluminium-dark);
     border-radius: 6px;
@@ -177,7 +177,7 @@ ul {
 }
 
 .item-form input::placeholder {
-    color: #8a97a4;
+    color: #333333;
 }
 
 .item-form input:hover,
@@ -232,7 +232,8 @@ ul {
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem 1.15rem;
-    background: #fff;
+    background: var(--paper); /* Folosește variabila pentru fundal */
+    color: var(--ink);
     border: 1px solid var(--aluminium-dark);
     border-left: 6px solid var(--steel);
     border-radius: var(--radius-card);
@@ -326,7 +327,7 @@ ul {
 }
 
 /* ---------- Mobil ---------- */
-@media (max-width: 520px) {
+@media (max-width: 700px) {
     .app-header {
         padding-top: 2.25rem;
         padding-bottom: 2.75rem;
