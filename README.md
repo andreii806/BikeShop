@@ -52,3 +52,22 @@ Plain JavaScript, no DOM. piese.js holds the array and functions that read and c
 | S2-R5 | original array unchanged after add | [piese.js](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/piese.js#L54) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md](https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/README.md?plain=1#L42-L54  https://github.com/andreii806/BikeShop/blob/9fc7dca032b7d37d20c5fde4a59349aec27679e2/AI-log/etapa-02.md?plain=1#L1-L11) | read |
 | S2-R7 | commit "Stage 2" pushed | [Commit history](https://github.com/andreii806/BikeShop/commit/9fc7dca032b7d37d20c5fde4a59349aec27679e2) | commit history |
+
+## Stage 3: Vite and React project
+The app now lives in frontend/, built with Vite. The data from stage 2 moved into the main component; the list is still printed raw.
+
+## How to run
+cd frontend
+npm install
+npm run dev
+
+## Verification Table - Stage 3
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S3-R1 | npm run dev starts without errors | https://github.com/andreii806/BikeShop/blob/main/frontend/package.json | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data | https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx | edit data, save |
+| S3-R3 | data from README, not from the example | https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx | compare with README |
+| S3-R4 | stage 1 styles reused | https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.css | look at the page |
+| S3-R5 | node_modules ignored, build passes | https://github.com/andreii806/BikeShop/blob/main/frontend/.gitignore | npm run build |
+| S3-R6 | README Stage 3 section + AI log | https://github.com/andreii806/BikeShop/blob/main/README.md?plain=1  https://github.com/andreii806/BikeShop/tree/main/AI-log | read |
+| S3-R7 | commit "Stage 3" pushed | https://github.com/andreii806/BikeShop/commit/906233530ffe29e21e2137712aa705d0c778524c | commit history |
