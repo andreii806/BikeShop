@@ -85,5 +85,5 @@ The list is rendered from the data, through two components:
 | S4-R3 | map + key={id}, no console warnings | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L12-L14 | F12, Console |
 | S4-R4 | message for empty list | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L5-L7 | set array to [] |
 | S4-R5 | state changes the card look | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L9 | toggle a done flag |
-| S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md | read |
-| S4-R7 | commit "Stage 4" pushed | Commit history | commit history |
+| S4-R6 | README Stage 4 section + AI log | https://github.com/andreii806/BikeShop/blob/4585008cef2226c496241b8d2b75eab3ee9e76c6/README.md?plain=1#L75-L89 / https://github.com/andreii806/BikeShop/blob/cbbcea01eb3e1066c1633e495506a13f8d6c3dc7/AI-log/etapa-04.md?plain=1#L1-L7 | read |
+| S4-R7 | commit "Stage 4" pushed | https://github.com/andreii806/BikeShop/commits/main/ | commit history |
