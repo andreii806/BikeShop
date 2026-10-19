@@ -1,4 +1,5 @@
 import './App.css';
+import PiesaList from './components/PiesaList.jsx';
 
 const piese = [
     { id: 1, titlu: "Pinioane Shimano 11-42t", gata: false, eticheta: "transmisie" },
@@ -22,8 +23,7 @@ export default function App() {
             <main className="container">
                 <section className="panel">
                     <h2>Piesele mele</h2>
-                    {/* Temporar: date brute sub formă de JSON */}
-                    <pre>{JSON.stringify(piese, null, 2)}</pre>
+                    <PiesaList piese={piese} />
                 </section>
             </main>
         </>
