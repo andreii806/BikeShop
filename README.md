@@ -71,3 +71,19 @@ npm run dev
 | S3-R5 | node_modules ignored, build passes | https://github.com/andreii806/BikeShop/blob/main/frontend/.gitignore | npm run build |
 | S3-R6 | README Stage 3 section + AI log | https://github.com/andreii806/BikeShop/blob/main/README.md?plain=1  https://github.com/andreii806/BikeShop/tree/main/AI-log | read |
 | S3-R7 | commit "Stage 3" pushed | https://github.com/andreii806/BikeShop/commit/906233530ffe29e21e2137712aa705d0c778524c | commit history |
+
+## Stage 4: components
+The list is rendered from the data, through two components:
+- PiesaList receives the whole array and renders one card per item
+- PiesaCard receives a single item through props and displays it
+
+## Verification Table - Stage 4
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S4-R1 | 2+ components in src/components/ | https://github.com/andreii806/BikeShop/tree/main/frontend/src/components | open folder |
+| S4-R2 | card receives data through props | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L7-L21 | read |
+| S4-R3 | map + key={id}, no console warnings | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L12-L14 | F12, Console |
+| S4-R4 | message for empty list | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L5-L7 | set array to [] |
+| S4-R5 | state changes the card look | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L9 | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md | read |
+| S4-R7 | commit "Stage 4" pushed | Commit history | commit history |
