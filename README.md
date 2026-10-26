@@ -87,3 +87,18 @@ The list is rendered from the data, through two components:
 | S4-R5 | state changes the card look | https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L9 | toggle a done flag |
 | S4-R6 | README Stage 4 section + AI log | https://github.com/andreii806/BikeShop/blob/4585008cef2226c496241b8d2b75eab3ee9e76c6/README.md?plain=1#L75-L89 / https://github.com/andreii806/BikeShop/blob/cbbcea01eb3e1066c1633e495506a13f8d6c3dc7/AI-log/etapa-04.md?plain=1#L1-L7 | read |
 | S4-R7 | commit "Stage 4" pushed | https://github.com/andreii806/BikeShop/commits/main/ | commit history |
+
+## Stage 5: local state and events
+The list lives in React state. Checking and deleting work from the page, and the counters in the header follow automatically. A button in the header switches between light and dark mode.
+
+## Verification Table - Stage 5
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S5-R1 | list kept in useState, in App | [App.jsx#L18](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L18) | read |
+| S5-R2 | toggling changes state and card look | [App.jsx#L22-L26](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L22-L26), [PiesaCard.jsx#L11-L15](https://github.com/andreii806/BikeShop/blob/main/frontend/src/components/PiesaCard.jsx#L11-L15) | click a checkbox |
+| S5-R3 | delete removes the item | [App.jsx#L29-L31](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L29-L31), [PiesaCard.jsx#L23-L27](https://github.com/andreii806/BikeShop/blob/main/frontend/src/components/PiesaCard.jsx#L23-L27) | click Șterge |
+| S5-R4 | header counter derived, not in state | [App.jsx#L41](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L41) | toggle, watch header |
+| S5-R5 | immutable updates (no push, splice, assignment) | [App.jsx#L22-L31](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L22-L31) | read |
+| S5-R6 | light/dark toggle: state + data-theme on html | [App.jsx#L34-L38](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L34-L38), [App.css#L87-L107](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.css#L87-L107) | click the button |
+| S5-R7 | no console warnings; README + AI log | [README.md](https://github.com/andreii806/BikeShop/blob/main/README.md), [ai-log/etapa-05.md](https://github.com/andreii806/BikeShop/blob/main/ai-log/etapa-05.md) | F12, Console |
+| S5-R8 | commit "Stage 5" pushed | [Commit history](https://github.com/andreii806/BikeShop/commits/main) | commit history |
