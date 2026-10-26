@@ -360,3 +360,80 @@ ul {
         --aluminium-dark: #352f4d;
     }
 }
+
+/* Etapa 5: Checkbox si buton de stergere in card */
+.piesa-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.piesa-main input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent, #3b82f6);
+    cursor: pointer;
+}
+
+.btn-danger {
+    border: 1px solid #ef4444;
+    background: transparent;
+    color: #ef4444;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* Etapa 5: Butonul de comutare a temei */
+.app-header {
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Tema sistemului, daca utilizatorul nu a ales explicit tema luminoasa */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #14121d;
+        --card: #1e1b2e;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: #352f4d;
+        --accent-soft: #2a2342;
+        --shadow: none;
+    }
+}
+
+/* Tema aleasa din buton are prioritate fața de cea a sistemului */
+:root[data-theme="dark"] {
+    --bg: #14121d;
+    --card: #1e1b2e;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #352f4d;
+    --accent-soft: #2a2342;
+    --shadow: none;
+}
