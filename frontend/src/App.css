@@ -6,14 +6,14 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
 
-/* ---------- Variabile ---------- */
+/* ---------- Variabile (Mod Luminos) ---------- */
 :root {
-    --ink: #101b26;          /* albastru-negru, ca vopseaua de cadru */
-    --steel: #566676;        /* text secundar */
-    --aluminium: #e6eaee;    /* fundal pagină */
-    --aluminium-dark: #c3cbd3;
-    --paper: #f8fafb;        /* suprafețe */
-    --hivis: #ffc21a;        /* galben reflectorizant */
+    --ink: #0f172a;          /* Albastru-negru intens, contrast excelent */
+    --steel: #64748b;        /* Text secundar, gri curat */
+    --aluminium: #f1f5f9;    /* Fundal pagină, gri-aluminiu deschis și luminos */
+    --aluminium-dark: #cbd5e1; /* Borduri fine și curate */
+    --paper: #ffffff;        /* Panouri și carduri alb pur */
+    --hivis: #ffc21a;        /* Galben reflectorizant */
 
     --transmisie: #0e7c7b;
     --franare: #d6343a;
@@ -73,7 +73,8 @@ ul {
 }
 
 .app-header p {
-    color: #333333;
+    color: var(--paper);
+    opacity: 0.85;
     max-width: 46ch;
     margin-top: 0.75rem;
 }
@@ -351,16 +352,6 @@ ul {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --aluminium: #14121d;
-        --paper: #1e1b2e;
-        --ink: #e5e7eb;
-        --steel: #9ca3af;
-        --aluminium-dark: #352f4d;
-    }
-}
-
 /* Etapa 5: Checkbox si buton de stergere in card */
 .piesa-main {
     display: flex;
@@ -372,14 +363,14 @@ ul {
 .piesa-main input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: var(--accent, #3b82f6);
+    accent-color: var(--suspensie);
     cursor: pointer;
 }
 
 .btn-danger {
-    border: 1px solid #ef4444;
+    border: 1px solid var(--franare);
     background: transparent;
-    color: #ef4444;
+    color: var(--franare);
     border-radius: 8px;
     padding: 6px 12px;
     font: inherit;
@@ -387,11 +378,11 @@ ul {
 }
 
 .btn-danger:hover {
-    background: #ef4444;
+    background: var(--franare);
     color: #fff;
 }
 
-/* Etapa 5: Butonul de comutare a temei */
+/* Etapa 5: Butonul de comutare a temei în antet */
 .app-header {
     position: relative;
 }
@@ -414,26 +405,22 @@ ul {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* Tema sistemului, daca utilizatorul nu a ales explicit tema luminoasa */
+/* Tema sistemului (daca utilizatorul nu a ales explicit tema luminoasa) */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --bg: #14121d;
-        --card: #1e1b2e;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --border: #352f4d;
-        --accent-soft: #2a2342;
-        --shadow: none;
+        --aluminium: #14121d;
+        --paper: #1e1b2e;
+        --ink: #e5e7eb;
+        --steel: #9ca3af;
+        --aluminium-dark: #352f4d;
     }
 }
 
-/* Tema aleasa din buton are prioritate fața de cea a sistemului */
+/* Tema intunecata aleasa explicit din buton */
 :root[data-theme="dark"] {
-    --bg: #14121d;
-    --card: #1e1b2e;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --border: #352f4d;
-    --accent-soft: #2a2342;
-    --shadow: none;
+    --aluminium: #14121d;
+    --paper: #1e1b2e;
+    --ink: #e5e7eb;
+    --steel: #9ca3af;
+    --aluminium-dark: #352f4d;
 }
