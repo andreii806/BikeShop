@@ -1,0 +1,9 @@
+{
+  "piese": [
+    { "id": 1, "titlu": "Pinioane Shimano 11-42t", "gata": false, "eticheta": "transmisie" },
+    { "id": 2, "titlu": "Set plăcuțe frână hidraulică", "gata": true, "eticheta": "franare" },
+    { "id": 3, "titlu": "Furcă aer 100mm", "gata": false, "eticheta": "suspensie" },
+    { "id": 4, "titlu": "Lanț 11 viteze KMC", "gata": false, "eticheta": "transmisie" },
+    { "id": 5, "titlu": "Disc frână 180mm Floating", "gata": true, "eticheta": "franare" }
+  ]
+}

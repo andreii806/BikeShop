@@ -102,3 +102,7 @@ The list lives in React state. Checking and deleting work from the page, and the
 | S5-R6 | light/dark toggle: state + data-theme on html | [App.jsx#L34-L38](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L34-L38), [App.css#L87-L107](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.css#L87-L107) | click the button |
 | S5-R7 | no console warnings; README + AI log | [README.md](https://github.com/andreii806/BikeShop/blob/main/README.md), [ai-log/etapa-05.md](https://github.com/andreii806/BikeShop/blob/main/ai-log/etapa-05.md) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [Commit history](https://github.com/andreii806/BikeShop/commits/main) | commit history |
+
+## Stage 6: data from a mock API
+The list is served by json-server from db.json. The app fetches it on load and shows a loading state and an error state.
+

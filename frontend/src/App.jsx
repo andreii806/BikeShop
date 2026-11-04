@@ -1,43 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PiesaList from "./components/PiesaList.jsx";
+import { fetchPiese } from "./api.js";
 import "./App.css";
 
-// Datele inițiale ale proiectului BikeShop
-const PIESE_INITIALE = [
-    { id: 1, titlu: "Pinioane Shimano 11-42t", gata: false, eticheta: "transmisie" },
-    { id: 2, titlu: "Set plăcuțe frână hidraulică", gata: true, eticheta: "franare" },
-    { id: 3, titlu: "Furcă aer 100mm", gata: false, eticheta: "suspensie" }
-];
-
-// Aflarea temei implicite a sistemului de operare
 function temaInitiala() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-    const [piese, setPiese] = useState(PIESE_INITIALE);
+    const [piese, setPiese] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [tema, setTema] = useState(temaInitiala);
 
-    // Actualizare imutabilă: comutare stare piesa (disponibil / indisponibil)
+    useEffect(() => {
+        let ignore = false;
+        async function load() {
+            try {
+                const data = await fetchPiese();
+                if (!ignore) setPiese(data);
+            } catch (err) {
+                if (!ignore) setError(err.message);
+            } finally {
+                if (!ignore) setLoading(false);
+            }
+        }
+        load();
+        return () => {
+            ignore = true;
+        };
+    }, []);
+
     function handleToggle(id) {
         setPiese((prev) =>
             prev.map((p) => (p.id === id ? { ...p, gata: !p.gata } : p))
         );
     }
 
-    // Actualizare imutabilă: ștergere piesa
     function handleDelete(id) {
         setPiese((prev) => prev.filter((p) => p.id !== id));
     }
 
-    // Comutarea temei (Light/Dark mode)
     function handleTema() {
         const noua = tema === "dark" ? "light" : "dark";
         setTema(noua);
         document.documentElement.dataset.theme = noua;
     }
 
-    // Valoare derivată: piese în stoc (ne-bifate)
     const disponibile = piese.filter((p) => !p.gata).length;
 
     return (
@@ -60,11 +69,19 @@ export default function App() {
             <main className="container">
                 <section className="panel">
                     <h2>Piesele mele</h2>
-                    <PiesaList
-                        piese={piese}
-                        onToggle={handleToggle}
-                        onDelete={handleDelete}
-                    />
+                    {loading && <p className="info">Se încarcă...</p>}
+                    {error && (
+                        <p className="error">
+                            Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+                        </p>
+                    )}
+                    {!loading && !error && (
+                        <PiesaList
+                            piese={piese}
+                            onToggle={handleToggle}
+                            onDelete={handleDelete}
+                        />
+                    )}
                 </section>
             </main>
         </>
