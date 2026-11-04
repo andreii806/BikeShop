@@ -106,3 +106,13 @@ The list lives in React state. Checking and deleting work from the page, and the
 ## Stage 6: data from a mock API
 The list is served by json-server from db.json. The app fetches it on load and shows a loading state and an error state.
 
+## Verification Table - Stage 6
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L7](https://github.com/andreii806/BikeShop/blob/main/frontend/package.json#L7), [db.json](https://github.com/andreii806/BikeShop/blob/main/frontend/db.json) | open localhost:3001/piese |
+| S6-R2 | data no longer in React code | [App.jsx#L11](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L11) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L67](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/App.jsx#L72) | npx json-server --watch db.json --port 3001 --delay 4000 |
+| S6-R4 | error message when API is down | [App.jsx#L68-L72](https://github.com/andreii806/BikeShop/blob/main/frontend/src/App.jsx#L68-L72) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L1-L9](https://github.com/andreii806/BikeShop/blob/main/frontend/src/api.js#L1-L9), [.env.example](https://github.com/andreii806/BikeShop/blob/main/frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md](https://github.com/andreii806/BikeShop/blob/main/README.md), [AI-log/etapa-06.md](https://github.com/andreii806/BikeShop/blob/main/AI-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [Commit history](https://github.com/andreii806/BikeShop/commits/main) | commit history |
