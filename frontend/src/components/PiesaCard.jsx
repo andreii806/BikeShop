@@ -1,11 +1,7 @@
-// O singură piesă din listă, primită prin props.
-// Valorile din date rămân fără diacritice; pe ecran apar textele de mai jos.
-const ETICHETE_CATEGORIE = {
-    transmisie: "Transmisie",
-    franare: "Frânare",
-    suspensie: "Suspensie"
-};
+import IconTip from "./IconTip.jsx";
+import { ETICHETE_CATEGORIE, formatPret } from "../etichete.js";
 
+// O singură piesă din listă, primită prin props.
 export default function PiesaCard({ piesa, onToggle, onDelete }) {
     return (
         <li className={piesa.gata ? "item-card done" : "item-card"}>
@@ -15,11 +11,16 @@ export default function PiesaCard({ piesa, onToggle, onDelete }) {
                     checked={piesa.gata}
                     onChange={() => onToggle(piesa.id)}
                 />
+                <IconTip tip={piesa.eticheta} />
                 <div>
                     <h3>{piesa.titlu}</h3>
-                    <span className={`badge badge-${piesa.eticheta}`}>
-                        {ETICHETE_CATEGORIE[piesa.eticheta] || piesa.eticheta}
-                    </span>
+                    <div className="piesa-meta">
+                        <span className={`badge badge-${piesa.eticheta}`}>
+                            {ETICHETE_CATEGORIE[piesa.eticheta] || piesa.eticheta}
+                        </span>
+                        {piesa.marca && <span className="marca">{piesa.marca}</span>}
+                        {piesa.pret > 0 && <span className="pret">{formatPret(piesa.pret)}</span>}
+                    </div>
                 </div>
             </label>
             <div className="card-actions">

@@ -1,9 +1,9 @@
 {
   "piese": [
-    { "id": 1, "titlu": "Pinioane Shimano 11-42t", "gata": false, "eticheta": "transmisie" },
-    { "id": 2, "titlu": "Set plăcuțe frână hidraulică", "gata": true, "eticheta": "franare" },
-    { "id": 3, "titlu": "Furcă aer 100mm", "gata": false, "eticheta": "suspensie" },
-    { "id": 4, "titlu": "Lanț 11 viteze KMC", "gata": false, "eticheta": "transmisie" },
-    { "id": 5, "titlu": "Disc frână 180mm Floating", "gata": true, "eticheta": "franare" }
+    { "id": 1, "titlu": "Pinioane Shimano 11-42t", "gata": false, "eticheta": "transmisie", "marca": "Shimano", "pret": 289 },
+    { "id": 2, "titlu": "Set plăcuțe frână hidraulică", "gata": true, "eticheta": "franare", "marca": "SRAM", "pret": 95 },
+    { "id": 3, "titlu": "Furcă aer 100mm", "gata": false, "eticheta": "suspensie", "marca": "RockShox", "pret": 1899 },
+    { "id": 4, "titlu": "Lanț BMX 1/2 x 1/8", "gata": false, "eticheta": "transmisie", "marca": "KMC", "pret": 79 },
+    { "id": 5, "titlu": "Disc frână 203mm downhill", "gata": true, "eticheta": "franare", "marca": "Shimano", "pret": 249 }
   ]
 }

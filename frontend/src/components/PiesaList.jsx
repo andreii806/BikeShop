@@ -2,7 +2,12 @@ import PiesaCard from "./PiesaCard.jsx";
 
 export default function PiesaList({ piese, onToggle, onDelete }) {
     if (!piese || piese.length === 0) {
-        return <p className="empty">Nu există nicio piesă în magazin.</p>;
+        return (
+            <div className="empty">
+                <span className="empty-illustration" aria-hidden="true" />
+                <p>Nu există nicio piesă în magazin.</p>
+            </div>
+        );
     }
 
     return (

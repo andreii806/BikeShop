@@ -1,7 +1,7 @@
 # BikeShop
 
-Online shop that manages an inventory of bicycle parts and their stock availability.
-Built for cycling enthusiasts who want to see at a glance which parts are in stock and which are not.
+Online shop that manages an inventory of bicycle parts and their stock availability, focused on downhill, enduro and BMX.
+Built for gravity and BMX riders who want to see at a glance which parts are in stock and which are not.
 
 ## Data model
 
@@ -10,13 +10,15 @@ Built for cycling enthusiasts who want to see at a glance which parts are in sto
 | name | `titlu` | text | required, max 100 chars |
 | unavailable flag | `gata` | boolean | toggled from the list; `true` = out of stock, default `false` |
 | part type (fixed tag) | `eticheta` | fixed values | `transmisie`, `franare`, `suspensie` (shown as Transmisie, Frânare, Suspensie) |
-| category | `categorie` | relation | Downhill, Enduro, Road, BMX, Electric – the kind of bike the part fits (from week 10) |
+| brand | `marca` | text | optional, e.g. Shimano, SRAM, RockShox |
+| price | `pret` | number | in lei, greater than 0 |
+| category | `categorie` | relation | Downhill, Enduro, BMX (main focus), Road, Electric – the kind of bike the part fits (from week 10) |
 | user | `owner` | relation | the owner of the item (from week 11) |
 
 Sample data used across all stages:
-1. Pinioane Shimano 11-42t, in stock (active), Transmisie, Enduro
-2. Set plăcuțe frână hidraulică, unavailable (done), Frânare, Road
-3. Furcă aer 100mm, in stock (active), Suspensie, Electric
+1. Pinioane Shimano 11-42t, in stock (active), Transmisie, Enduro, Shimano, 289 lei
+2. Set plăcuțe frână hidraulică, unavailable (done), Frânare, Downhill, SRAM, 95 lei
+3. Furcă aer 100mm, in stock (active), Suspensie, Enduro, RockShox, 1.899 lei
 
 ## How to run
 
@@ -144,3 +146,16 @@ After a review against the stage guides, the CSS was cleaned up: one column unti
 | S6-R5 | fetch only in api.js, URL from env | [api.js#L1-L9](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/api.js#L1-L9), [.env.example](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/.env.example) | search for fetch |
 | S6-R6 | README Stage 6 section + AI log | [README.md#L127-L135](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L127-L135), [etapa-06.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-06.md?plain=1#L1-L26) | read |
 | S6-R7 | commit "Stage 6" pushed | [4cdb510](https://github.com/andreii806/BikeShop/commit/4cdb51013601a8e98b207c7c662cc6a2f0784e55) | commit history |
+
+## Extras (beyond the stage guides)
+- Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.
+- Logo next to the title: a full-suspension bike line drawing, turned into a yellow PNG with a transparent background (`frontend/src/assets/logo-bike.png`). The favicon stays a simple SVG bike (`frontend/public/favicon.svg`), because the detailed drawing is not readable at 16–32 px.
+- The chain under the header is a bike chain line drawing: one link is cut out as a seamless tile (`frontend/src/assets/chain-tile.png`) and repeated across the page.
+- An icon for each part type in the category color – `IconTip.jsx`: drawings used as CSS masks for drivetrain (a chainring and crank, `transmisie.png`), brakes (a rotor, `disc-frana.png`) and suspension (a fork and a coil shock, `suspensie.png`), all in `frontend/src/assets/`, so they take the category color in both themes.
+- Header stats derived from the list: total value of the parts in stock and the number of parts per type – `Statistici.jsx`.
+- Cards fade in one after another on load, a short animation when a part is checked, and the footer from the mockup is back. Animations are turned off for users who prefer reduced motion.
+- Sorting (default, price ascending / descending, name A–Z): the sorted list is derived on every render from a copy (`[...piese].sort(...)`), so the state stays unchanged.
+- The light / dark choice is saved in `localStorage` (`frontend/src/tema.js`) and applied in `main.jsx` before the first render, so it survives a refresh without flashing.
+- While the API is loading, three pulsing skeleton cards are shown under the "Se încarcă..." message – `PiesaSkeleton.jsx`.
+- The empty list message shows the bike drawing, faded, above the text.
+- Shared labels and price formatting live in `frontend/src/etichete.js`.

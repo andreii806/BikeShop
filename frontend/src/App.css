@@ -104,25 +104,22 @@ ul {
     border-radius: var(--radius-tag);
 }
 
-/* Lanțul: centrat fix pe linia dintre antet și conținut */
+/* Lanțul: desenul unei zale repetat pe orizontală,
+   centrat fix pe linia dintre antet și conținut */
 .app-header::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -7px; /* Coborât cu jumătate din înălțime (14px / 2 = 7px) */
-    height: 14px;
-    z-index: 10;  /* Asigură suprapunerea peste ambele secțiuni */
-    background-image: radial-gradient(
-        ellipse 8px 4.5px at 50% 50%,
-        transparent 62%,
-        var(--hivis) 68%,
-        var(--hivis) 96%,
-        transparent 100%
-    );
-    background-size: 14px 14px;
+    bottom: -14px; /* coborât cu jumătate din înălțime (28px / 2 = 14px) */
+    height: 28px;
+    z-index: 10;   /* asigură suprapunerea peste ambele secțiuni */
+    background-image: url("./assets/chain-tile.png");
+    background-size: auto 100%;
     background-repeat: repeat-x;
-    opacity: 0.9;
+    background-position: left center;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45)); /* contur fin, vizibil și pe fundal deschis */
+    pointer-events: none;
 }
 
 /* ---------- Layout principal ---------- */
@@ -373,6 +370,7 @@ ul {
 @media (prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
+        animation: none !important;
     }
 }
 
@@ -488,3 +486,249 @@ ul {
     border-radius: 8px;
     padding: 10px 12px;
 }
+
+/* Marca și prețul piesei, pe rândul etichetei */
+.piesa-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.marca {
+    font-size: 0.85rem;
+    color: var(--steel);
+}
+
+.pret {
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+.item-card.done .pret {
+    color: var(--steel);
+}
+
+/* ==========================================================
+   Partea vizuală: siglă, iconițe, statistici, animații, subsol
+   ========================================================== */
+
+/* Subsolul rămâne jos chiar dacă lista e scurtă */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#root > main {
+    flex: 1;
+    width: 100%;
+}
+
+/* Sigla de lângă titlu */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.logo {
+    height: 0.95em;
+    width: auto;
+    flex-shrink: 0;
+}
+
+/* Casetele cu statistici din antet */
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.stats li {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--header-text);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-tag);
+}
+
+.stats strong {
+    font-weight: 750;
+}
+
+.stats .stat-transmisie { border-left: 4px solid var(--transmisie); }
+.stats .stat-franare    { border-left: 4px solid var(--franare); }
+.stats .stat-suspensie  { border-left: 4px solid var(--suspensie); }
+
+/* Iconița tipului de piesă, în culoarea categoriei */
+.tip-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: var(--radius-card);
+    background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* Desen folosit ca mască: forma vine din imagine, culoarea din currentColor */
+.tip-mask {
+    width: 30px;
+    height: 30px;
+    background-color: currentColor;
+    -webkit-mask: center / contain no-repeat;
+    mask: center / contain no-repeat;
+}
+
+.tip-mask-transmisie {
+    -webkit-mask-image: url("./assets/transmisie.png");
+    mask-image: url("./assets/transmisie.png");
+}
+
+.tip-mask-franare {
+    -webkit-mask-image: url("./assets/disc-frana.png");
+    mask-image: url("./assets/disc-frana.png");
+}
+
+.tip-mask-suspensie {
+    -webkit-mask-image: url("./assets/suspensie.png");
+    mask-image: url("./assets/suspensie.png");
+}
+
+.tip-transmisie { color: var(--transmisie); }
+.tip-franare    { color: var(--franare); }
+.tip-suspensie  { color: var(--suspensie); }
+
+.item-card.done .tip-icon {
+    opacity: 0.5;
+}
+
+/* Cardurile apar pe rând la încărcare */
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.item-card {
+    animation: card-in 0.4s ease both;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.item-card:nth-child(2) { animation-delay: 60ms; }
+.item-card:nth-child(3) { animation-delay: 120ms; }
+.item-card:nth-child(4) { animation-delay: 180ms; }
+.item-card:nth-child(5) { animation-delay: 240ms; }
+.item-card:nth-child(n + 6) { animation-delay: 300ms; }
+
+/* Efect scurt la bifare */
+@keyframes bifa {
+    50% { transform: scale(1.25); }
+}
+
+.piesa-main input[type="checkbox"]:checked {
+    animation: bifa 0.25s ease;
+}
+
+.item-card h3 {
+    transition: color 0.2s ease;
+}
+
+/* Subsolul */
+.app-footer {
+    margin-top: 2rem;
+}
+
+/* ==========================================================
+   Sortare, carduri schelet, lista goală ilustrată
+   ========================================================== */
+
+/* Titlul panoului și sortarea, pe același rând */
+.panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.panel-head h2 {
+    margin-bottom: 0;
+}
+
+.sortare {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--steel);
+}
+
+.sortare select {
+    font: inherit;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--aluminium-dark);
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+}
+
+.sortare select:hover {
+    border-color: var(--steel);
+}
+
+/* Carduri schelet: blocuri gri care pulsează cât timp se încarcă lista */
+@keyframes puls {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
+.info + .item-list {
+    margin-top: 0.75rem;
+}
+
+.item-card.skeleton,
+.item-card.skeleton:hover {
+    background: var(--paper);
+    border-color: var(--aluminium-dark);
+    border-left-color: var(--aluminium-dark);
+    cursor: default;
+}
+
+.sk {
+    display: block;
+    background: var(--aluminium-dark);
+    border-radius: 6px;
+    animation: puls 1.2s ease-in-out infinite;
+}
+
+.sk-check  { width: 18px;  height: 18px; border-radius: 4px; }
+.sk-icon   { width: 40px;  height: 40px; border-radius: var(--radius-card); }
+.sk-title  { width: 220px; max-width: 45vw; height: 16px; margin-bottom: 0.6rem; }
+.sk-meta   { width: 150px; max-width: 30vw; height: 14px; }
+.sk-button { width: 72px;  height: 34px; border-radius: 8px; }
+
+/* Lista goală: bicicleta din siglă, estompată, deasupra mesajului */
+.empty-illustration {
+    display: block;
+    width: 160px;
+    height: 99px;
+    margin: 0.5rem auto 0.75rem;
+    background-color: var(--steel);
+    opacity: 0.45;
+    -webkit-mask: url("./assets/logo-bike.png") center / contain no-repeat;
+    mask: url("./assets/logo-bike.png") center / contain no-repeat;
+}
+
