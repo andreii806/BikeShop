@@ -90,7 +90,7 @@ The app now lives in `frontend/`, built with Vite. The data from stage 2 moved i
 | S3-R3 | data from README, not from the example | [App.jsx#L3-L7](https://github.com/andreii806/BikeShop/blob/906233530ffe29e21e2137712aa705d0c778524c/frontend/src/App.jsx#L3-L7) | compare with README |
 | S3-R4 | stage 1 styles reused | [App.css](https://github.com/andreii806/BikeShop/blob/906233530ffe29e21e2137712aa705d0c778524c/frontend/src/App.css) | look at the page |
 | S3-R5 | node_modules ignored, build passes | [.gitignore#L10-L11](https://github.com/andreii806/BikeShop/blob/906233530ffe29e21e2137712aa705d0c778524c/frontend/.gitignore#L10-L11) | npm run build |
-| S3-R6 | README Stage 3 section + AI log | README.md, ai-log/etapa-03.md – *permalink after the review commit* | read |
+| S3-R6 | README Stage 3 section + AI log | [README.md#L82-L83](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L82-L83), [etapa-03.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-03.md?plain=1#L1-L24) | read |
 | S3-R7 | commit "Stage 3" pushed | [9062335](https://github.com/andreii806/BikeShop/commit/906233530ffe29e21e2137712aa705d0c778524c) | commit history |
 
 ## Stage 4: components
@@ -106,7 +106,7 @@ The list is rendered from the data, through two components:
 | S4-R3 | map + key={id}, no console warnings | [PiesaList.jsx#L11-L15](https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L11-L15) | F12, Console |
 | S4-R4 | message for empty list | [PiesaList.jsx#L4-L7](https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaList.jsx#L4-L7) | set array to [] |
 | S4-R5 | state changes the card look | [PiesaCard.jsx#L9](https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L9), [PiesaCard.jsx#L16-L18](https://github.com/andreii806/BikeShop/blob/536558592fea48b0af436575392a1862c091eb14/frontend/src/components/PiesaCard.jsx#L16-L18) | toggle a done flag |
-| S4-R6 | README Stage 4 section + AI log | README.md, ai-log/etapa-04.md – *permalink after the review commit* | read |
+| S4-R6 | README Stage 4 section + AI log | [README.md#L96-L99](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L96-L99), [etapa-04.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-04.md?plain=1#L1-L24) | read |
 | S4-R7 | commit "Stage 4" pushed | [5365585](https://github.com/andreii806/BikeShop/commit/536558592fea48b0af436575392a1862c091eb14) | commit history |
 
 ## Stage 5: local state and events
@@ -121,7 +121,7 @@ The list lives in React state. Checking and deleting work from the page, and the
 | S5-R4 | header counter derived, not in state | [App.jsx#L40-L41](https://github.com/andreii806/BikeShop/blob/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337/frontend/src/App.jsx#L40-L41) | toggle, watch header |
 | S5-R5 | immutable updates (no push, splice, assignment) | [App.jsx#L21-L31](https://github.com/andreii806/BikeShop/blob/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337/frontend/src/App.jsx#L21-L31) | read |
 | S5-R6 | light/dark toggle: state + data-theme on html | [App.jsx#L33-L38](https://github.com/andreii806/BikeShop/blob/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337/frontend/src/App.jsx#L33-L38), [App.jsx#L46-L52](https://github.com/andreii806/BikeShop/blob/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337/frontend/src/App.jsx#L46-L52), [App.css#L408-L426](https://github.com/andreii806/BikeShop/blob/f53a6acc57246bbf9560e12fc5eda9f0aab3fbf9/frontend/src/App.css#L408-L426) | click the button, both system themes |
-| S5-R7 | no console warnings; README + AI log | README.md, ai-log/etapa-05.md – *permalink after the review commit* | F12, Console |
+| S5-R7 | no console warnings; README + AI log | [README.md#L112-L113](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L112-L113), [etapa-05.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-05.md?plain=1#L1-L24) | F12, Console |
 | S5-R8 | commit "Stage 5" pushed | [8efd1e0](https://github.com/andreii806/BikeShop/commit/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337) | commit history |
 
 ## Stage 6: data from a mock API
@@ -142,5 +142,5 @@ After a review against the stage guides, the CSS was cleaned up: one column unti
 | S6-R3 | loading message while waiting | [App.jsx#L72](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/App.jsx#L72) | `npx json-server --watch db.json --port 3001 --delay 4000` |
 | S6-R4 | error message when API is down | [App.jsx#L16-L32](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/App.jsx#L16-L32), [App.jsx#L73-L77](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/App.jsx#L73-L77) | stop npm run api, refresh |
 | S6-R5 | fetch only in api.js, URL from env | [api.js#L1-L9](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/api.js#L1-L9), [.env.example](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/.env.example) | search for fetch |
-| S6-R6 | README Stage 6 section + AI log | README.md, ai-log/etapa-06.md – *permalink after the review commit* | read |
+| S6-R6 | README Stage 6 section + AI log | [README.md#L127-L135](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L127-L135), [etapa-06.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-06.md?plain=1#L1-L26) | read |
 | S6-R7 | commit "Stage 6" pushed | [4cdb510](https://github.com/andreii806/BikeShop/commit/4cdb51013601a8e98b207c7c662cc6a2f0784e55) | commit history |
