@@ -1,6 +1,8 @@
+// O singură piesă din listă, primită prin props.
+// Valorile din date rămân fără diacritice; pe ecran apar textele de mai jos.
 const ETICHETE_CATEGORIE = {
     transmisie: "Transmisie",
-    franare: "Franare",
+    franare: "Frânare",
     suspensie: "Suspensie"
 };
 
@@ -20,13 +22,18 @@ export default function PiesaCard({ piesa, onToggle, onDelete }) {
                     </span>
                 </div>
             </label>
-            <button
-                className="btn-danger"
-                onClick={() => onDelete(piesa.id)}
-                aria-label={`Șterge ${piesa.titlu}`}
-            >
-                Șterge
-            </button>
+            <div className="card-actions">
+                <span className="status">
+                    {piesa.gata ? "Indisponibil" : "În stoc"}
+                </span>
+                <button
+                    className="btn-danger"
+                    onClick={() => onDelete(piesa.id)}
+                    aria-label={`Șterge ${piesa.titlu}`}
+                >
+                    Șterge
+                </button>
+            </div>
         </li>
     );
 }
