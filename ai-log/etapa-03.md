@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [<Gemini share link> (Vite + React setup and cleaning the template)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (Vite + React setup and cleaning the template)](https://share.gemini.google/B5nOOVZQje61)
 
 ## Key requests
 

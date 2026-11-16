@@ -5,7 +5,7 @@
 
 
 ## Conversations
-- [<Gemini share link> (CSS Grid layout and responsive behaviour)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (CSS Grid layout and responsive behaviour)](https://share.gemini.google/B5nOOVZQje61)
 
 
 ## Key requests

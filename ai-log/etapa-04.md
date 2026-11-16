@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [<Gemini share link> (splitting the list into components)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (splitting the list into components)](https://share.gemini.google/B5nOOVZQje61)
 
 ## Key requests
 

@@ -4,7 +4,7 @@
 - Claude (Cowork)
 
 ## Conversations
-- <Claude share link> (stage 7: form, validation and saving every change on the server)
+- Claude (Cowork) session – no share link, Cowork sessions cannot be shared (stage 7: form, validation and saving every change on the server)
 
 ## Key requests
 

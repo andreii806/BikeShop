@@ -5,7 +5,7 @@
 - Claude (Cowork)
 
 ## Conversations
-- [<Gemini share link> (json-server, fetch with async/await, loading and error states)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (json-server, fetch with async/await, loading and error states)](https://share.gemini.google/B5nOOVZQje61)
 - Claude Cowork session, no share link available
 
 ## Key requests

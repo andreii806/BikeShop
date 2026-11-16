@@ -38,8 +38,7 @@ The stage 1–2 static mockup is kept in `mockup/`: open `mockup/index.html` in 
 | Tool | Used for |
 | :--- | :--- |
 | Gemini | Stages 1–6: CSS Grid/Flexbox layout, immutable array functions, Vite setup, components and props, state and events, `useEffect` with json-server |
-| ChatGPT | Stage 1: styling assistance |
-| Claude (Cowork) | Stage 6: reviewing the project against the stage guides, fixing the CSS (single-column layout, dark theme variables, hover/focus), the README and the AI logs |
+| Claude (Cowork) | Stage 6: reviewing the project against the stage guides, fixing the CSS (single-column layout, dark theme variables, hover/focus), the README and the AI logs, extras. Stage 7: the form, validation and saving every change on the server. Cowork sessions cannot be shared, so the AI logs have no Claude link |
 
 Details per stage: see the [ai-log/](ai-log/) folder.
 
@@ -154,6 +153,18 @@ Parts can be added from the page. The form (`PiesaForm.jsx`) is controlled and v
 Every change goes to the API before it shows up in the list: add (`POST`), toggle (`PATCH`) and delete (`DELETE`), all through one shared `request` function in `api.js`. The list is updated with what the server returns, so a new part gets its id from json-server. The submit button is disabled while saving, and the form is cleared only when saving succeeded.
 
 `tw.json` and the `data-testid` attributes are the markers for the automatic check.
+
+### Verification Table - Stage 7
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S7-R1 | controlled form: value + onChange on every field | [PiesaForm.jsx#L71-L122](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L71-L122) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [PiesaForm.jsx#L19-L36](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L19-L36), [PiesaForm.jsx#L38-L45](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L38-L45) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L48-L51](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/App.jsx#L48-L51), [api.js#L21-L23](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/api.js#L21-L23) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [App.jsx#L53-L72](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/App.jsx#L53-L72), [api.js#L25-L34](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/api.js#L25-L34) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [PiesaForm.jsx#L46-L66](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L46-L66), [PiesaForm.jsx#L128-L130](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L128-L130) | --delay 3000; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/tw.json), [PiesaCard.jsx#L7-L43](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaCard.jsx#L7-L43), [PiesaForm.jsx#L70-L130](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaForm.jsx#L70-L130), [PiesaList.jsx#L6](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/components/PiesaList.jsx#L6), [App.jsx#L131-L141](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/frontend/src/App.jsx#L131-L141) | querySelectorAll in the console |
+| S7-R7 | README Stage 7 section + AI log | [README.md#L151-L156](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/README.md?plain=1#L151-L156), [etapa-07.md](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/ai-log/etapa-07.md?plain=1#L1-L29) | read |
+| S7-R8 | commit "Stage 7" pushed | [53a31c8](https://github.com/andreii806/BikeShop/commit/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb) | commit history |
 
 ## Extras (beyond the stage guides)
 - Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.

@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [<Gemini share link> (state, events and the theme toggle)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (state, events and the theme toggle)](https://share.gemini.google/B5nOOVZQje61)
 
 ## Key requests
 

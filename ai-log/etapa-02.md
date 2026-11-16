@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [<Gemini share link> (immutable array functions for the parts list)](https://share.gemini.google/B5nOOVZQje61)
+- [Gemini conversation (immutable array functions for the parts list)](https://share.gemini.google/B5nOOVZQje61)
 
 ## Key requests
 
