@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import PiesaList from "./components/PiesaList.jsx";
 import PiesaSkeleton from "./components/PiesaSkeleton.jsx";
+import PiesaForm from "./components/PiesaForm.jsx";
 import Logo from "./components/Logo.jsx";
 import Statistici from "./components/Statistici.jsx";
-import { fetchPiese } from "./api.js";
+import { createPiesa, deletePiesa, fetchPiese, updatePiesa } from "./api.js";
 import { temaInitiala, salveazaTema } from "./tema.js";
 import "./App.css";
 
@@ -29,7 +30,9 @@ export default function App() {
                 const data = await fetchPiese();
                 if (!ignore) setPiese(data);
             } catch (err) {
-                if (!ignore) setError(err.message);
+                if (!ignore) {
+                    setError(`Nu am putut încărca datele: ${err.message}. Rulează npm run api?`);
+                }
             } finally {
                 if (!ignore) setLoading(false);
             }
@@ -40,14 +43,32 @@ export default function App() {
         };
     }, []);
 
-    function handleToggle(id) {
-        setPiese((prev) =>
-            prev.map((p) => (p.id === id ? { ...p, gata: !p.gata } : p))
-        );
+    // Întâi serverul, apoi state-ul: pe ecran ajunge doar ce s-a salvat.
+    // handleAdd nu prinde eroarea: o lasă să ajungă în formular, care o afișează.
+    async function handleAdd(piesa) {
+        const creata = await createPiesa(piesa); // serverul întoarce piesa cu id
+        setPiese((prev) => [...prev, creata]);
     }
 
-    function handleDelete(id) {
-        setPiese((prev) => prev.filter((p) => p.id !== id));
+    async function handleToggle(id) {
+        const piesa = piese.find((p) => p.id === id);
+        try {
+            const actualizata = await updatePiesa(id, { gata: !piesa.gata });
+            setError(null);
+            setPiese((prev) => prev.map((p) => (p.id === id ? actualizata : p)));
+        } catch (err) {
+            setError(`Nu am putut modifica piesa: ${err.message}`);
+        }
+    }
+
+    async function handleDelete(id) {
+        try {
+            await deletePiesa(id);
+            setError(null);
+            setPiese((prev) => prev.filter((p) => p.id !== id));
+        } catch (err) {
+            setError(`Nu am putut șterge piesa: ${err.message}`);
+        }
     }
 
     function handleTema() {
@@ -86,6 +107,11 @@ export default function App() {
 
             <main className="container">
                 <section className="panel">
+                    <h2>Adaugă piesă</h2>
+                    <PiesaForm onAdd={handleAdd} />
+                </section>
+
+                <section className="panel">
                     <div className="panel-head">
                         <h2>Piesele mele</h2>
                         <label className="sortare">
@@ -104,16 +130,17 @@ export default function App() {
                     </div>
                     {loading && (
                         <>
-                            <p className="info">Se încarcă...</p>
+                            <p className="info" data-testid="loading">Se încarcă...</p>
                             <PiesaSkeleton />
                         </>
                     )}
                     {error && (
-                        <p className="error">
-                            Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+                        <p className="error" data-testid="error">
+                            {error}
                         </p>
                     )}
-                    {!loading && !error && (
+                    {/* Fără !error: dacă o bifare eșuează, lista rămâne pe ecran, sub mesaj */}
+                    {!loading && (
                         <PiesaList
                             piese={pieseAfisate}
                             onToggle={handleToggle}

@@ -10,8 +10,8 @@ Built for gravity and BMX riders who want to see at a glance which parts are in 
 | name | `titlu` | text | required, max 100 chars |
 | unavailable flag | `gata` | boolean | toggled from the list; `true` = out of stock, default `false` |
 | part type (fixed tag) | `eticheta` | fixed values | `transmisie`, `franare`, `suspensie` (shown as Transmisie, Frânare, Suspensie) |
-| brand | `marca` | text | optional, e.g. Shimano, SRAM, RockShox |
-| price | `pret` | number | in lei, greater than 0 |
+| brand | `marca` | text | optional, max 50 chars, e.g. Shimano, SRAM, RockShox |
+| price | `pret` | number | required, in lei, greater than 0 and at most 100.000 |
 | category | `categorie` | relation | Downhill, Enduro, BMX (main focus), Road, Electric – the kind of bike the part fits (from week 10) |
 | user | `owner` | relation | the owner of the item (from week 11) |
 
@@ -50,7 +50,8 @@ Details per stage: see the [ai-log/](ai-log/) folder.
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 ## Stage 1: static mockup
 Plain HTML and CSS (now in `mockup/`): header with a counter, an add form (text + select), three cards with the sample data, two columns on desktop and one under 700px, visible focus and a dark theme built from CSS variables.
@@ -146,6 +147,13 @@ After a review against the stage guides, the CSS was cleaned up: one column unti
 | S6-R5 | fetch only in api.js, URL from env | [api.js#L1-L9](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/src/api.js#L1-L9), [.env.example](https://github.com/andreii806/BikeShop/blob/4cdb51013601a8e98b207c7c662cc6a2f0784e55/frontend/.env.example) | search for fetch |
 | S6-R6 | README Stage 6 section + AI log | [README.md#L127-L135](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/README.md?plain=1#L127-L135), [etapa-06.md](https://github.com/andreii806/BikeShop/blob/41ad5491b58cabc49e507356a976d3a90b45fd18/ai-log/etapa-06.md?plain=1#L1-L26) | read |
 | S6-R7 | commit "Stage 6" pushed | [4cdb510](https://github.com/andreii806/BikeShop/commit/4cdb51013601a8e98b207c7c662cc6a2f0784e55) | commit history |
+
+## Stage 7: form and validation
+Parts can be added from the page. The form (`PiesaForm.jsx`) is controlled and validated: the name is required (max 100 chars), the price must be a number greater than 0 and at most 100.000 lei, and the brand is optional (max 50 chars). Errors are shown next to the form, never with `alert`.
+
+Every change goes to the API before it shows up in the list: add (`POST`), toggle (`PATCH`) and delete (`DELETE`), all through one shared `request` function in `api.js`. The list is updated with what the server returns, so a new part gets its id from json-server. The submit button is disabled while saving, and the form is cleared only when saving succeeded.
+
+`tw.json` and the `data-testid` attributes are the markers for the automatic check.
 
 ## Extras (beyond the stage guides)
 - Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.

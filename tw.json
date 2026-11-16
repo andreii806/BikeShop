@@ -1,0 +1,6 @@
+{
+  "resource": "piese",
+  "title": "titlu",
+  "done": "gata",
+  "sample": { "eticheta": "franare", "marca": "Shimano", "pret": 199 }
+}
