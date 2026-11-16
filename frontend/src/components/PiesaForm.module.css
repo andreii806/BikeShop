@@ -1,0 +1,49 @@
+.form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form label {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form input,
+.form select {
+    width: 100%;
+    font: inherit;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--aluminium-dark);
+    border-radius: 6px;
+    padding: 0.65rem 0.8rem;
+    transition: border-color 0.15s ease;
+}
+
+.form input::placeholder {
+    color: var(--steel);
+}
+
+.form input:hover,
+.form select:hover {
+    border-color: var(--steel);
+}
+
+.form input:focus-visible,
+.form select:focus-visible {
+    outline: 3px solid var(--suspensie);
+    outline-offset: 2px;
+    border-color: var(--ink);
+}
+
+/* Câmpul greșit, marcat prin aria-invalid */
+.form input[aria-invalid="true"] {
+    border-color: var(--franare);
+}
+
+.form :global(.error) {
+    font-size: 0.9rem;
+}

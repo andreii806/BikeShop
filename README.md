@@ -50,7 +50,8 @@ Details per stage: see the [ai-log/](ai-log/) folder.
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## Stage 1: static mockup
 Plain HTML and CSS (now in `mockup/`): header with a counter, an add form (text + select), three cards with the sample data, two columns on desktop and one under 700px, visible focus and a dark theme built from CSS variables.
@@ -166,6 +167,17 @@ Every change goes to the API before it shows up in the list: add (`POST`), toggl
 | S7-R7 | README Stage 7 section + AI log | [README.md#L151-L156](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/README.md?plain=1#L151-L156), [etapa-07.md](https://github.com/andreii806/BikeShop/blob/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb/ai-log/etapa-07.md?plain=1#L1-L29) | read |
 | S7-R8 | commit "Stage 7" pushed | [53a31c8](https://github.com/andreii806/BikeShop/commit/53a31c86a5ab9c50033fd9682d4b254e6b5c2ebb) | commit history |
 
+## Stage 8: routing and detail page
+Four pages behind React Router, all inside one shared `Layout` (header with navigation and the theme button, footer), drawn in place of `<Outlet />`:
+- `/` – the list with the add form (`PiesePage.jsx`); the counter and the stats moved here from the header
+- `/piese/:id` – the detail page of one part (`PiesaDetaliuPage.jsx`), loaded from the server by the id in the URL; a missing id shows an error and a way back
+- `/despre` – about the app (`DesprePage.jsx`)
+- any other URL – the app's 404 page (`NotFoundPage.jsx`)
+
+Navigation uses `Link` / `NavLink`, so the page never reloads. Component styles moved to CSS Modules (`*.module.css` next to each component and page); `index.css` keeps only the color variables, base elements and shared classes (`.panel`, `.btn`, `.btn-danger`, `.badge`, `.status`, `.error`, `.info`, `.empty`).
+
+After pulling this stage, run `npm install` again in `frontend/` (new dependency: `react-router-dom`).
+
 ## Extras (beyond the stage guides)
 - Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.
 - Logo next to the title: a full-suspension bike line drawing, turned into a yellow PNG with a transparent background (`frontend/src/assets/logo-bike.png`). The favicon stays a simple SVG bike (`frontend/public/favicon.svg`), because the detailed drawing is not readable at 16–32 px.
@@ -177,4 +189,4 @@ Every change goes to the API before it shows up in the list: add (`POST`), toggl
 - The light / dark choice is saved in `localStorage` (`frontend/src/tema.js`) and applied in `main.jsx` before the first render, so it survives a refresh without flashing.
 - While the API is loading, three pulsing skeleton cards are shown under the "Se încarcă..." message – `PiesaSkeleton.jsx`.
 - The empty list message shows the bike drawing, faded, above the text.
-- Shared labels and price formatting live in `frontend/src/etichete.js`.
+- Shared labels and price formatting live in `frontend/src/constants.js`.

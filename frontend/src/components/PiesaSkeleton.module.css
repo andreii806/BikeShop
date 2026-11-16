@@ -1,0 +1,41 @@
+@keyframes puls {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
+.list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.15rem;
+    background: var(--paper);
+    border: 1px solid var(--aluminium-dark);
+    border-left: 6px solid var(--aluminium-dark);
+    border-radius: var(--radius-card);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sk {
+    display: block;
+    background: var(--aluminium-dark);
+    border-radius: 6px;
+    animation: puls 1.2s ease-in-out infinite;
+}
+
+.check  { width: 18px;  height: 18px; border-radius: 4px; }
+.icon   { width: 40px;  height: 40px; border-radius: var(--radius-card); }
+.title  { width: 220px; max-width: 45vw; height: 16px; margin-bottom: 0.6rem; }
+.meta   { width: 150px; max-width: 30vw; height: 14px; }
+.button { width: 72px;  height: 34px; border-radius: 8px; }

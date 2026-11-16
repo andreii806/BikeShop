@@ -1,0 +1,266 @@
+/* ==========================================================
+   BikeShop - stiluri globale
+   Aici rămân doar variabilele de culoare, elementele de bază și
+   clasele comune mai multor componente. Stilurile fiecărei
+   componente stau lângă ea, în fișierul *.module.css.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap");
+
+/* ---------- Variabile (tema luminoasă) ---------- */
+:root {
+    --ink: #0f172a;            /* text principal, albastru-negru */
+    --steel: #64748b;          /* text secundar */
+    --aluminium: #f1f5f9;      /* fundalul paginii */
+    --aluminium-dark: #cbd5e1; /* borduri */
+    --paper: #ffffff;          /* panouri și carduri */
+    --hivis: #ffc21a;          /* galben reflectorizant */
+
+    --transmisie: #0e7c7b;
+    --franare: #d6343a;
+    --suspensie: #2f5bea;
+    --link: #2f5bea;
+
+    /* Antetul rămâne închis la culoare în ambele teme */
+    --header-bg: #0f172a;
+    --header-text: #ffffff;
+    --on-hivis: #0f172a;       /* text pe fundal galben */
+
+    /* Stări: hover, piesă indisponibilă, stoc, eroare */
+    --hover-bg: #f8fafc;
+    --done-stripe-a: #f1f3f5;
+    --done-stripe-b: #e9edf0;
+    --ok: #1f6b3a;
+    --error-text: #b91c1c;
+    --error-bg: #fef2f2;
+    --error-border: #fca5a5;
+
+    --radius-panel: 10px;
+    --radius-card: 8px;
+    --radius-tag: 4px;
+
+    --font: "Archivo", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    --page-width: 1040px;
+}
+
+/* Tema sistemului, dacă utilizatorul nu a ales explicit tema luminoasă */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --aluminium: #14121d;
+        --paper: #1e1b2e;
+        --ink: #e5e7eb;
+        --steel: #9ca3af;
+        --aluminium-dark: #352f4d;
+        --link: #8fb0ff;
+        --header-bg: #0b0a12;
+        --hover-bg: #26223a;
+        --done-stripe-a: #1a1727;
+        --done-stripe-b: #221e33;
+        --ok: #4ade80;
+        --error-text: #fca5a5;
+        --error-bg: #3b1d2e;
+        --error-border: #6b2a4a;
+    }
+}
+
+/* Tema întunecată aleasă explicit din buton */
+:root[data-theme="dark"] {
+    --aluminium: #14121d;
+    --paper: #1e1b2e;
+    --ink: #e5e7eb;
+    --steel: #9ca3af;
+    --aluminium-dark: #352f4d;
+    --link: #8fb0ff;
+    --header-bg: #0b0a12;
+    --hover-bg: #26223a;
+    --done-stripe-a: #1a1727;
+    --done-stripe-b: #221e33;
+    --ok: #4ade80;
+    --error-text: #fca5a5;
+    --error-bg: #3b1d2e;
+    --error-border: #6b2a4a;
+}
+
+/* ---------- Elemente de bază ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--aluminium);
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Culoarea linkurilor vine dintr-o variabilă, ca stilurile din module să o poată suprascrie */
+a {
+    color: var(--link);
+}
+
+/* Subsolul rămâne jos chiar dacă pagina e scurtă */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Clase comune ---------- */
+.panel {
+    background: var(--paper);
+    border: 1px solid var(--aluminium-dark);
+    border-radius: var(--radius-panel);
+    padding: 1.5rem;
+}
+
+.panel h2 {
+    font-size: 1.35rem;
+    font-weight: 750;
+    font-stretch: 110%;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+}
+
+.info {
+    color: var(--steel);
+    font-weight: 600;
+}
+
+.error {
+    color: var(--error-text);
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.empty {
+    color: var(--steel);
+    font-style: italic;
+    text-align: center;
+    padding: 1.25rem;
+    border: 1px dashed var(--aluminium-dark);
+    border-radius: var(--radius-card);
+}
+
+/* Butonul principal, galben, în stilul siglei */
+.btn {
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    color: var(--on-hivis);
+    background: var(--hivis);
+    border: 2px solid var(--on-hivis);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 3px 0 var(--on-hivis);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--on-hivis);
+}
+
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 var(--on-hivis);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-danger {
+    border: 1px solid var(--franare);
+    background: transparent;
+    color: var(--franare);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background: var(--franare);
+    color: #fff;
+}
+
+/* Eticheta tipului de piesă */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: #fff;
+    background: var(--steel);
+    border-radius: var(--radius-tag);
+}
+
+.badge-transmisie { background: var(--transmisie); }
+.badge-franare    { background: var(--franare); }
+.badge-suspensie  { background: var(--suspensie); }
+
+/* Starea stocului, folosită în card și în pagina de detaliu */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 650;
+    color: var(--ok);
+}
+
+.status::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: #2ea15a;
+    box-shadow: 0 0 0 3px rgba(46, 161, 90, 0.2);
+}
+
+.status-off {
+    color: var(--franare);
+}
+
+.status-off::before {
+    background: var(--franare);
+    box-shadow: 0 0 0 3px rgba(214, 52, 58, 0.18);
+}
+
+/* ---------- Accesibilitate ---------- */
+:focus-visible {
+    outline: 2px solid var(--suspensie);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .panel {
+        padding: 1.15rem;
+    }
+}

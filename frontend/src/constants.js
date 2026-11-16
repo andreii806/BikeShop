@@ -1,4 +1,4 @@
-// Valorile fixe ale tipului de piesă și textele afișate pe ecran.
+// Valorile fixe ale tipului de piesă și textele afișate pe ecran, într-un singur loc.
 // În date valorile rămân fără diacritice; pe ecran apar etichetele de mai jos.
 export const TIPURI = ["transmisie", "franare", "suspensie"];
 

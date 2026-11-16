@@ -1,0 +1,16 @@
+.list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+/* Lista goală: bicicleta din siglă, estompată, deasupra mesajului */
+.illustration {
+    display: block;
+    width: 160px;
+    height: 99px;
+    margin: 0.5rem auto 0.75rem;
+    background-color: var(--steel);
+    opacity: 0.45;
+    -webkit-mask: url("../assets/logo-bike.png") center / contain no-repeat;
+    mask: url("../assets/logo-bike.png") center / contain no-repeat;
+}

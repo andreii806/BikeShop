@@ -1,0 +1,67 @@
+/* Formularul în stânga, lista în dreapta */
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 24px;
+    align-items: start;
+}
+
+/* Titlul panoului și sortarea, pe același rând */
+.head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.head h2 {
+    margin-bottom: 0;
+}
+
+.sortare {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--steel);
+}
+
+.sortare select {
+    font: inherit;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--aluminium-dark);
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+}
+
+.sortare select:hover {
+    border-color: var(--steel);
+}
+
+/* Contorul, mutat din antet în panoul listei */
+.summary {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    background: var(--hivis);
+    color: var(--on-hivis);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: var(--radius-tag);
+}
+
+.error {
+    margin-bottom: 0.75rem;
+}
+
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

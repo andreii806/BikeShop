@@ -1,0 +1,12 @@
+.about {
+    max-width: 720px;
+}
+
+.about p + p {
+    margin-top: 0.9rem;
+}
+
+.stack {
+    color: var(--steel);
+    font-size: 0.95rem;
+}

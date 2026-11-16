@@ -1,0 +1,52 @@
+.icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: var(--radius-card);
+    background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* Desen folosit ca mască: forma vine din imagine, culoarea din currentColor */
+.mask {
+    width: 30px;
+    height: 30px;
+    background-color: currentColor;
+    -webkit-mask: center / contain no-repeat;
+    mask: center / contain no-repeat;
+}
+
+.transmisie { color: var(--transmisie); }
+.franare    { color: var(--franare); }
+.suspensie  { color: var(--suspensie); }
+
+.transmisie .mask {
+    -webkit-mask-image: url("../assets/transmisie.png");
+    mask-image: url("../assets/transmisie.png");
+}
+
+.franare .mask {
+    -webkit-mask-image: url("../assets/disc-frana.png");
+    mask-image: url("../assets/disc-frana.png");
+}
+
+.suspensie .mask {
+    -webkit-mask-image: url("../assets/suspensie.png");
+    mask-image: url("../assets/suspensie.png");
+}
+
+.mare {
+    width: 88px;
+    height: 88px;
+    border-radius: var(--radius-panel);
+}
+
+.mare .mask {
+    width: 68px;
+    height: 68px;
+}
+
+.estompat {
+    opacity: 0.5;
+}

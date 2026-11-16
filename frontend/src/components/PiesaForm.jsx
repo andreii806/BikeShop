@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { TIPURI, ETICHETE_CATEGORIE } from "../etichete.js";
+import { TIPURI, ETICHETE_CATEGORIE } from "../constants.js";
+import styles from "./PiesaForm.module.css";
 
 const TITLU_MAX = 100;
 const MARCA_MAX = 50;
@@ -67,7 +68,7 @@ export default function PiesaForm({ onAdd }) {
     }
 
     return (
-        <form className="item-form" onSubmit={handleSubmit} noValidate data-testid="form">
+        <form className={styles.form} onSubmit={handleSubmit} noValidate data-testid="form">
             <label>
                 Denumire piesă
                 <input
@@ -125,7 +126,7 @@ export default function PiesaForm({ onAdd }) {
                     {eroare}
                 </p>
             )}
-            <button type="submit" disabled={trimite} data-testid="form-submit">
+            <button type="submit" className="btn" disabled={trimite} data-testid="form-submit">
                 {trimite ? "Se salvează..." : "Adaugă piesa"}
             </button>
         </form>
