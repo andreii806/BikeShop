@@ -22,14 +22,14 @@ Sample data used across all stages:
 
 ## How to run
 
-The React app lives in `frontend/` and needs Node.js 20+.
+The project has two parts and needs Node.js 20+: the API in `backend/` (Express) and the React app in `frontend/`.
 
 ```
-cd frontend
-npm install
-npm run api   # terminal 1: json-server, http://localhost:3001/piese
-npm run dev   # terminal 2: Vite, http://localhost:5173
+cd backend && npm install && npm run dev    # terminal 1, API on http://localhost:3001
+cd frontend && npm install && npm run dev   # terminal 2, app on http://localhost:5173
 ```
+
+`backend/.env.example` lists the settings (`PORT`, `CORS_ORIGIN`); the defaults work without a `.env` file.
 
 The stage 1–2 static mockup is kept in `mockup/`: open `mockup/index.html` in a browser (no build step, no server).
 
@@ -51,7 +51,8 @@ Details per stage: see the [ai-log/](ai-log/) folder.
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD
 
 ## Stage 1: static mockup
 Plain HTML and CSS (now in `mockup/`): header with a counter, an add form (text + select), three cards with the sample data, two columns on desktop and one under 700px, visible focus and a dark theme built from CSS variables.
@@ -128,7 +129,7 @@ The list lives in React state. Checking and deleting work from the page, and the
 | S5-R8 | commit "Stage 5" pushed | [8efd1e0](https://github.com/andreii806/BikeShop/commit/8efd1e0c99487a7b4d0b036e05ee8e1b4f5fd337) | commit history |
 
 ## Stage 6: data from a mock API
-The list is served by json-server from `db.json`. The app fetches it on load and shows a loading state and an error state.
+The list is served by json-server from `db.json`. The app fetches it on load and shows a loading state and an error state. (json-server and `db.json` were replaced by the Express API in stage 9.)
 
 ```
 npm run api   # terminal 1, http://localhost:3001
@@ -189,6 +190,34 @@ After pulling this stage, run `npm install` again in `frontend/` (new dependency
 | S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` (here `/piese/:id`) | [Layout.jsx#L34](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/frontend/src/components/Layout.jsx#L34), [PiesaCard.jsx#L14-L50](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/frontend/src/components/PiesaCard.jsx#L14-L50), [PiesaDetaliuPage.jsx#L37-L70](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/frontend/src/pages/PiesaDetaliuPage.jsx#L37-L70), [NotFoundPage.jsx#L7](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/frontend/src/pages/NotFoundPage.jsx#L7), [App.jsx#L15](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/frontend/src/App.jsx#L15), [tw.json](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/tw.json) | querySelector in the console |
 | S8-R7 | README Stage 8 section + AI log | [README.md#L170-L180](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/README.md?plain=1#L170-L180), [etapa-08.md](https://github.com/andreii806/BikeShop/blob/21061068be0f2f8315e88f8382188ee0c72eca16/ai-log/etapa-08.md?plain=1#L1-L29) | read |
 | S8-R8 | commit "Stage 8" pushed | [2106106](https://github.com/andreii806/BikeShop/commit/21061068be0f2f8315e88f8382188ee0c72eca16) | commit history |
+
+## Stage 9: own backend
+json-server is gone. The API is an Express server in `backend/`, with REST routes, server side validation and CORS. Data is still kept in memory (the same five parts as before) and resets on restart; stage 10 moves it to MariaDB.
+
+- `src/server.js` starts the server; `src/app.js` holds the middleware (`cors`, `express.json`), the routes, the 404 route and the central error handler
+- `src/routes/piese.js` – the five routes for `/piese`
+- `src/validation.js` – the same rules as the form: name required (max 100 chars), part type one of `transmisie`, `franare`, `suspensie`, price a number greater than 0 and at most 100.000, brand optional (max 50 chars), `gata` true or false; unknown fields such as `id` are ignored (whitelist)
+
+Every error has the same shape, `{ "error": "..." }`, and the frontend shows that message (for example "Piesa nu există" on `/piese/999`).
+
+| Method and path | Success | Errors |
+| :--- | :--- | :--- |
+| `GET /piese` | 200 | – |
+| `GET /piese/:id` | 200 | 400 invalid id, 404 missing |
+| `POST /piese` | 201, with the new id | 400 invalid data |
+| `PATCH /piese/:id` | 200 | 400, 404 |
+| `DELETE /piese/:id` | 204, no body | 400, 404 |
+| `GET /health` | 200 `{ "status": "ok" }` | – |
+
+Testing with curl (Git Bash):
+
+```
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/piese
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/piese -H "Content-Type: application/json" -d '{"titlu":"Din curl","eticheta":"franare","pret":199}'
+curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/piese -H "Content-Type: application/json" -d '{"titlu":""}'
+curl -s -w ' -> %{http_code}\n' http://localhost:3001/piese/999
+curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/piese/6
+```
 
 ## Extras (beyond the stage guides)
 - Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.

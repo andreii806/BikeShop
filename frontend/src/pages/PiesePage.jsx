@@ -29,7 +29,7 @@ export default function PiesePage() {
                 if (!ignore) setPiese(data);
             } catch (err) {
                 if (!ignore) {
-                    setError(`Nu am putut încărca datele: ${err.message}. Rulează npm run api?`);
+                    setError(`Nu am putut încărca datele: ${err.message}. Pornește backend-ul (npm run dev în backend/)?`);
                 }
             } finally {
                 if (!ignore) setLoading(false);

@@ -17,8 +17,8 @@ export default function DesprePage() {
                 din iconițele tipurilor de piese sunt făcute de mână.
             </p>
             <p className={styles.stack}>
-                Stack: React, Vite, React Router, CSS Modules, json-server (temporar), urmând
-                Node.js, Express, MariaDB și Docker.
+                Stack: React, Vite, React Router, CSS Modules, iar pe server Node.js și
+                Express, urmând MariaDB și Docker.
             </p>
         </section>
     );
