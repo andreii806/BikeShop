@@ -219,6 +219,17 @@ curl -s -w ' -> %{http_code}\n' http://localhost:3001/piese/999
 curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/piese/6
 ```
 
+### Verification Table - Stage 9
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S9-R1 | npm run dev in backend/ starts the API on 3001 | [package.json#L7-L10](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/package.json#L7-L10), [server.js#L1-L7](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/server.js#L1-L7) | run it, open /health |
+| S9-R2 | all five routes answer with the right codes | [piese.js#L18-L72](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/routes/piese.js#L18-L72), [app.js#L19-L25](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/app.js#L19-L25) | curl commands from README |
+| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L13-L73](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/validation.js#L13-L73), [piese.js#L44-L52](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/routes/piese.js#L44-L52) | POST with empty title |
+| S9-R4 | React app works with json-server removed | [package.json#L6-L11](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/frontend/package.json#L6-L11), [api.js#L10-L14](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/frontend/src/api.js#L10-L14) | stop everything but backend |
+| S9-R5 | no CORS errors in the browser console | [app.js#L9](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/backend/src/app.js#L9) | open console |
+| S9-R6 | README Stage 9 section + AI log | [README.md#L194-L221](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/README.md?plain=1#L194-L221), [README.md#L23-L33](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/README.md?plain=1#L23-L33), [etapa-09.md](https://github.com/andreii806/BikeShop/blob/e6dac68aec39e15c936873727cbb1dae7b9722e7/ai-log/etapa-09.md?plain=1#L1-L29) | read |
+| S9-R7 | commit "Stage 9" pushed | [e6dac68](https://github.com/andreii806/BikeShop/commit/e6dac68aec39e15c936873727cbb1dae7b9722e7) | commit history |
+
 ## Extras (beyond the stage guides)
 - Each part also has a brand (`marca`) and a price in lei (`pret`), shown on the card.
 - Logo next to the title: a full-suspension bike line drawing, turned into a yellow PNG with a transparent background (`frontend/src/assets/logo-bike.png`). The favicon stays a simple SVG bike (`frontend/public/favicon.svg`), because the detailed drawing is not readable at 16–32 px.
